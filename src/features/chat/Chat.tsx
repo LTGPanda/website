@@ -9,6 +9,7 @@ const Chat: FunctionComponent = () => {
     </div>
   );
 };
-
+//testa lägga in nåt i ifram saken inom tagserna liksom liksom där     ^
+//testa göra en .js fil som ligger utanför och gör sakerna som jag är lovad
 Chat.displayName = "Chat";
 export default Chat;

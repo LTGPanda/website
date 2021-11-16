@@ -25,10 +25,10 @@ ReactDOM.render(
 );
 
 /*var chatBox = document.querySelector('[title="Twitch Chat"]');
-console.log(chatBox);*/
+console.log(chatBox);
 
 var iframe = document.getElementById("myFrame");
-console.log(iframe);
+console.log(iframe);*/
 //kolla documentation för content window som måste vara nånsort poggnes
 
 //console.log(chatBox.contentWindow.document.getElementById("root"));

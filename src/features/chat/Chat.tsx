@@ -21,9 +21,10 @@ const Chat: FunctionComponent = () => {
 
 function bettingButt() {//implement flip flop system
   var chatboxBox = document.getElementById("chatbox");
-  chatboxBox!.classList.add("d-none");
   var viewBett = document.getElementById("ViewerBetting");
-  viewBett!.classList.remove("d-none");
+
+  viewBett!.classList.contains("d-none") ? viewBett!.classList.remove("d-none") : viewBett!.classList.add("d-none");
+  chatboxBox!.classList.contains("d-none") ? chatboxBox!.classList.remove("d-none") : chatboxBox!.classList.add("d-none");
 }
 
 

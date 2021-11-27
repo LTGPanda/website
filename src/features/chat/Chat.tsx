@@ -29,7 +29,12 @@ function bettingButt() {//implement flip flop system
 
 
 
-//TODO: make bettingpage class. rename shit. make it so it works. accessibility? make do pwetty
+/*TODO: 
+* rename shit. 
+* make it so it works. 
+* accessibility? 
+* make do pwetty
+*/
 
 //hitta ett sett att få något över en annan object
 //kan ha en bar över chaten

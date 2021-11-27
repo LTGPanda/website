@@ -1,5 +1,7 @@
 import { FunctionComponent } from "react";
-
+//import { postPresence, fetchProfile } from "../../api/api";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 //temp shtuff
 
@@ -18,68 +20,117 @@ const PostAPIBett = {
   ]
 };
 
+const PostAPIBettInLogged = {
+  "id": "101",
+  "objective": "Will Catmando become a dog?",
+  "options": [
+    {
+      "description": "He will become a dog",
+      "id": "512",
+      "total": "0"
+    },
+    {
+      "description": "He will not become a dog and live",
+      "id": "513",
+      "total": "0"
+    },
+    {
+      "description": "He will die",
+      "id": "514",
+      "total": "0"
+    }
+  ],
+  "status": "Open",
+  "winningOption": null,
+  "total": "0",
+  "alreadyBet": false
+};
+
+const TheBett: FunctionComponent = () => {
+  const profile = useSelector((state: RootState) => state.profile);
+  var BettList = [];
+
+  for (let index = 0; index < PostAPIBett.options.length; index++) 
+  {
+    BettList.push(<p>{PostAPIBett.options[index].description}</p>);
+  }
+
+  if (profile.isAuthenticated)//TODO: make api get function for betting 
+  {
+    if (PostAPIBettInLogged.status)//i can do this with less code but it works
+    {
+      var BettCheck = [];
+      for (let index = 0; index < PostAPIBett.options.length; index++) {
+        var RadioName = "Option-" + index;
+        BettCheck.push(
+          <div className="form-check">
+            <input className="form-check-input" type="radio" name="BettOption" id={RadioName}/>
+            <label className="form-check-label" htmlFor={RadioName}>
+              {PostAPIBett.options[index].description}
+            </label>
+        </div>
+        );
+
+      }
+      return(
+        <div>
+          <h5>{PostAPIBett.objective}</h5>
+          {BettCheck}
+        </div>
+      );
+    }
+    else //set choosen bet active
+    {
+      var BettCheck = [];
+      for (let index = 0; index < PostAPIBett.options.length; index++) {
+        var RadioName = "Option-" + index;
+        BettCheck.push(
+          <div className="form-check">
+            <input className="form-check-input" type="radio" name="BettOption" id={RadioName} disabled/>
+            <label className="form-check-label" htmlFor={RadioName}>
+              {PostAPIBett.options[index].description}
+            </label>
+        </div>
+        );
+
+      }
+      return(
+        <div>
+          <h5>{PostAPIBett.objective}</h5>
+          {BettCheck}
+        </div>
+      );
+    }
+  }
+  else
+  {
+    return(
+      <div>
+        <h5>{PostAPIBett.objective}</h5>
+        {BettList}
+      </div>
+    );
+  }
+}
 
 
 const ViewerBetting: FunctionComponent = () => {
-  var description = "this is a place holder but i am sure drako will fill this riiight upp one day";
-  var proDisc = "oh yes he will";
-  var conDisc = "nah he succs";
-  var maxBett = 1000;//place holdy
-  var proColor = "#387AFF";
-  var conColor = "#F5009B";
+
+  //let Profil = fetchProfile();
   const twitchBGColor = {
     backgroundColor: " #18181B",
     maxWidth: 340
   };//gör snygg og //överst char desc?  style={{height:"100%"}}
   //https://getbootstrap.com/docs/4.0/utilities/flex/
+
   return (
       <div id="ViewerBetting" className="d-none col d-flex flex-column m-0 p-0" style={twitchBGColor}>
         <div className="d-flex p-4 border-bottom border-secondary"></div>
         <div className="d-flex justify-content-center">
-          <span className="p-3">{description}</span>
-        </div>
-        <div className="d-flex justify-content-center">
-          <div className="d-flex flex-row p-3">
-            <div className="p-2" style={{color:proColor}}>
-              <dl><dt>{proDisc}</dt></dl>
-            </div>
-            <div className="p-2" style={{color:conColor}}>
-              <dl><dt>{conDisc}</dt></dl>
-            </div>
-          </div>
-        </div>
-
-        <div className="p-3">
-          <div className="progress" style={{backgroundColor: conColor}}>
-            <div className="progress-bar" role="progressbar" style={{width:"25%", backgroundColor: proColor}}></div>
-          </div>
-        </div>
-        <div className="input-group mb-3 align-self-end d-flex p-3">
-          <input type='number' min="0" max={maxBett} className="form-control"></input>
-          <div className="input-group-append">
-            <button className="btn" type="button" style={{backgroundColor: proColor}}>Bet!</button>
-          </div>
-          <div className="p-1"></div>
-          <input type='number' min="0" max={maxBett} className="form-control"></input>
-          <div className="input-group-append">
-            <button className="btn" type="button" style={{backgroundColor: conColor}}>Bet!</button>
-          </div>
+          <TheBett></TheBett>
         </div>
       </div>
   );
 };
 ViewerBetting.displayName = "ViewerBetting";
 export default ViewerBetting;
-
-/*
-  shit immana need.
-  * current bet deets
-    * the pot both sides
-    * count down
-    * who bet what (could be fun)
-  * personal
-    * scales
-    * all current bets user have betted on and how much
-  * random
-    * all current bets
-*/

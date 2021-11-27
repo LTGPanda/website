@@ -19,7 +19,7 @@ const Chat: FunctionComponent = () => {
   );
 };
 
-function bettingButt() {//implement flip flop system
+function bettingButt() {
   var chatboxBox = document.getElementById("chatbox");
   var viewBett = document.getElementById("ViewerBetting");
 
@@ -35,10 +35,5 @@ function bettingButt() {//implement flip flop system
 * accessibility? 
 * make do pwetty
 */
-
-//hitta ett sett att få något över en annan object
-//kan ha en bar över chaten
-//testa lägga in nåt i ifram saken inom tagserna liksom liksom där     ^
-//testa göra en .js fil som ligger utanför och gör sakerna som jag är lovad//
 Chat.displayName = "Chat";
 export default Chat;

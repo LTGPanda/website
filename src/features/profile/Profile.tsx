@@ -11,7 +11,13 @@ const Profile: FunctionComponent = () => {
     return (
       <div className="d-flex flex-row navbar-nav">
         <Navbar.Text>Scales:</Navbar.Text>
-        <AnimatedNumber className="navbar-text px-1" value={profile.balance} duration={1500} stepPrecision={0} />
+        <AnimatedNumber
+          className="navbar-text px-1"
+          initialValue={profile.initialBalance}
+          value={profile.balance}
+          duration={1500}
+          stepPrecision={0}
+        />
         <Navbar.Text>|</Navbar.Text>
         <Navbar.Text className="px-1">{profile.displayName}</Navbar.Text>
         <Navbar.Text>|</Navbar.Text>

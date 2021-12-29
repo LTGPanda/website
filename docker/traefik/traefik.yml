@@ -2,6 +2,8 @@
 log:
   level: INFO
 
+accessLog: {}
+
 api:
   insecure: true
   dashboard: true
@@ -37,4 +39,4 @@ http:
     to-backend:
       loadBalancer:
         servers:
-          - url: "https://drako-test-api.trumpi.co.za"
+          - url: "http://192.99.37.176"

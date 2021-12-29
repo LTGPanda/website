@@ -26,24 +26,24 @@ const Leaderboard: FunctionComponent = () => {
       next={fetchPage}
       scrollableTarget="content"
     >
-    <table className="table w-100">
-      <thead>
-        <tr>
-          <td>Rank</td>
-          <td>Name</td>
-          <td>Scales</td>
-        </tr>
-      </thead>
-      <tbody>
-        {leaderboard.map((x, i) => (
-          <tr key={x.displayName + i}>
-            <td>{x.rank}</td>
-            <td>{x.displayName}</td>
-            <td>{x.balance}</td>
+      <table className="table w-100">
+        <thead>
+          <tr>
+            <td>Rank</td>
+            <td>Name</td>
+            <td>Scales</td>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {leaderboard.map((x, i) => (
+            <tr key={x.displayName + i}>
+              <td>{x.rank}</td>
+              <td>{x.displayName}</td>
+              <td>{x.balance}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </InfiniteScroll>
   );
 };

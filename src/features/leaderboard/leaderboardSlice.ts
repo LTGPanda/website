@@ -10,8 +10,8 @@ const leaderboardSlice = createSlice({
   name: "leaderboard",
   initialState,
   reducers: {
-    updateLeaderboard(state, action: PayloadAction<{users: User[], append: boolean}>) {
-      if(action.payload.append) {
+    updateLeaderboard(state, action: PayloadAction<{ users: User[]; append: boolean }>) {
+      if (action.payload.append) {
         return state.concat(action.payload.users);
       }
       return action.payload.users;
@@ -19,15 +19,17 @@ const leaderboardSlice = createSlice({
   },
 });
 
-export const loadLeaderboard = (pageNumber: number, append: boolean): AppThunk => async (dispatch: AppDispatch) => {
-  const response = await axios.get(baseUrl + "leaderboard?pageSize=40&pageNum=" + pageNumber, axiosConfig);
+export const loadLeaderboard =
+  (pageNumber: number, append: boolean): AppThunk =>
+  async (dispatch: AppDispatch) => {
+    const response = await axios.get(baseUrl + "leaderboard?pageSize=40&pageNum=" + pageNumber, axiosConfig);
 
-  if (response.status === 200) {
-    dispatch(leaderboardSlice.actions.updateLeaderboard({users: response.data, append: append}));
-  }
+    if (response.status === 200) {
+      dispatch(leaderboardSlice.actions.updateLeaderboard({ users: response.data, append: append }));
+    }
 
-  handleErrors(dispatch, response);
-};
+    handleErrors(dispatch, response);
+  };
 
 export const { updateLeaderboard } = leaderboardSlice.actions;
 export default leaderboardSlice.reducer;

@@ -2,9 +2,9 @@ import React, { FunctionComponent } from "react";
 import { Outlet } from "react-router-dom";
 
 const Popout: FunctionComponent = () => (
-  <div className="container-fluid">
-    <div className="row row-cols-1 d-flex justify-content-center">
-      <div className="col popout">
+  <div className="container-fluid h-100">
+    <div className="row row-cols-1 d-flex justify-content-center h-100">
+      <div className="col popout align-self-center">
         <Outlet />
       </div>
     </div>

@@ -16,7 +16,16 @@ FIX:
   * page loads get bet from api
   * flip flop state, store
   * when bet is won make winning option pwetty collor
-TO ASK:
+DO: 
+  * animanations
+  * make pwety
+    * button group
+      * Butt color etc
+      * Butt look 
+    * text
+    * viewer tab
+    * flip flop Butt
+    *  
   
 betting 
 amount o user
@@ -46,12 +55,13 @@ const TheBet: FunctionComponent = () => {
   if (profile.isAuthenticated)
   {
     if (betting.game.status === "Open" && !betting.game.alreadyBet)//i can do this with less code but it works
-    {
+    {//dis look good?
       BetCheck.push(
       <>
           <ButtonGroup vertical className="mb-2">
             {betting.game.options.map((item, idx) => (
               <ToggleButton
+                className="btn btn-primary w-100"
                 key={idx}
                 id={`radio-${idx}`}
                 type="radio"
@@ -78,7 +88,7 @@ const TheBet: FunctionComponent = () => {
     }
 
     else if(betting.game.status === "Closed" || betting.game.alreadyBet)
-    {//why art thou not centered?
+    {
       BetCheck.push(
         <>
             <ButtonGroup vertical className="mb-2">
@@ -143,7 +153,7 @@ const ViewerBetting: FunctionComponent = () => {
     backgroundColor: " #18181B"
   };
   return (
-      <div id="ViewerBetting" className="d-none flex-row col-lg" style={twitchBGColor}>
+      <div id="ViewerBetting" className="d-none flex-row col-lg offcanvas offcanvas-end" tabIndex={-1} style={twitchBGColor}>
         <div className="border-bottom border-secondary p-4"></div>
         <div className="d-flex justify-content-center">
           <TheBet/>

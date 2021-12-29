@@ -4,7 +4,6 @@ import ViewerBetting from "./ViewerBetting"
 
 const Chat: FunctionComponent = () => {
   var loc = "https://www.twitch.tv/embed/drako/chat?parent=" + window.location.hostname + "&darkpopout";
-//can i move styles to here?
   return (
     <div className="flex-row col-lg d-flex flex-fill m-0 p-0">
       <ViewerBetting />
@@ -26,18 +25,6 @@ function bettingButt() {
   console.log("lol xd")
   viewBett!.classList.contains("show") ? viewBett!.classList.remove("show") : viewBett!.classList.add("show");
   viewBett!.style.visibility = "visible";
-
-  //viewBett!.classList.contains("d-none") ? viewBett!.classList.remove("d-none") : viewBett!.classList.add("d-none");
-  //chatboxBox!.classList.contains("d-none") ? chatboxBox!.classList.remove("d-none") : chatboxBox!.classList.add("d-none");
 }
-
-
-
-/*TODO: 
-* rename shit. 
-* make it so it works. 
-* accessibility? 
-* make do pwetty
-*/
 Chat.displayName = "Chat";
 export default Chat;

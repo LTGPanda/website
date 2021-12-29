@@ -148,17 +148,39 @@ function DisForm(OptId:string, Amount:string, Id:string, dispatch:AppDispatch) {
   }
 }
 
+function bettingButt() {
+  var chatboxBox = document.getElementById("chatbox");
+  var viewBett = document.getElementById("ViewerBetting");
+
+  console.log("lol xd")
+  viewBett!.classList.contains("show") ? viewBett!.classList.remove("show") : viewBett!.classList.add("show");
+  viewBett!.style.visibility = "visible";
+}
+
 const ViewerBetting: FunctionComponent = () => {
+  var navbar = document.querySelector<HTMLElement>(".navbar");
+  console.log(navbar);
+  var navHeight =  navbar!.offsetHeight;
   const twitchBGColor = {
-    backgroundColor: " #18181B"
+    backgroundColor: " #18181B",
+    marginTop: navHeight
   };
   return (
-      <div id="ViewerBetting" className="d-none flex-row col-lg offcanvas offcanvas-end" tabIndex={-1} style={twitchBGColor}>
-        <div className="border-bottom border-secondary p-4"></div>
-        <div className="d-flex justify-content-center">
-          <TheBet/>
+      <div id="ViewerBetting" className="flex-row col-lg offcanvas offcanvas-end" tabIndex={-1} aria-labelledby="ViewerBettingLabel" style={twitchBGColor}>
+        <div className="offcanvas-body">
+        <div id="ovelap-Box">
+          <div id="test2" data-bs-toggle="offcanvas" data-bs-target="#ViewerBetting" onClick={bettingButt}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-three-dots" viewBox="0 0 16 16">
+              <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+            </svg>
+          </div>
         </div>
-        <div className="d-flex border-bottom border-secondary"></div>
+          <div className="border-bottom border-secondary p-4"></div>
+          <div className="d-flex justify-content-center">
+            <TheBet/>
+          </div>
+          <div className="d-flex border-bottom border-secondary"></div>
+        </div>
       </div>
   );
 };

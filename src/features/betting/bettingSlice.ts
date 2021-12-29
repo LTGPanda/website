@@ -81,7 +81,7 @@ export const loadViewerBet =
   (TwitchId: string, betId: string): AppThunk =>
   async (dispatch: AppDispatch) => {
     const response = await axios.get(baseUrl + `betting/${betId}/bets?userId=${TwitchId}`);
-    const BetObj:Bet = {optionsID: response.data[0].optionId, amount: +response.data[0].amount};
+    const BetObj:Bet = {optionsID: response.data.optionId, amount: +response.data.amount};
 
     if(response.status === 200){
       dispatch(bettingSlice.actions.updateBet(BetObj));

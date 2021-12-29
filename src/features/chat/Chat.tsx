@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { Button } from "react-bootstrap";
 import ViewerBetting from "./ViewerBetting"
 
 const Chat: FunctionComponent = () => {
@@ -18,13 +19,16 @@ const Chat: FunctionComponent = () => {
     </div>
   );
 };
-
 function bettingButt() {
   var chatboxBox = document.getElementById("chatbox");
   var viewBett = document.getElementById("ViewerBetting");
 
-  viewBett!.classList.contains("d-none") ? viewBett!.classList.remove("d-none") : viewBett!.classList.add("d-none");
-  chatboxBox!.classList.contains("d-none") ? chatboxBox!.classList.remove("d-none") : chatboxBox!.classList.add("d-none");
+  console.log("lol xd")
+  viewBett!.classList.contains("show") ? viewBett!.classList.remove("show") : viewBett!.classList.add("show");
+  viewBett!.style.visibility = "visible";
+
+  //viewBett!.classList.contains("d-none") ? viewBett!.classList.remove("d-none") : viewBett!.classList.add("d-none");
+  //chatboxBox!.classList.contains("d-none") ? chatboxBox!.classList.remove("d-none") : chatboxBox!.classList.add("d-none");
 }
 
 
